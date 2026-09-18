@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>연구업적 · 보건정책관리연구소(준)</title>
+<meta name="description" content="고려대학교 보건정책관리연구소(준) — 데이터로 정책과 관리의 근거를 만듭니다">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap">
+<style>
+  :root{
+    --ink:#1E2126; --ink-2:#3D434B; --body:#575D66; --muted:#6E747D;
+    --crimson:#C4485C; --crimson-d:#A03348; --crimson-l:#E08494;
+    --paper:#FFFFFF; --sand:#F4F1EC; --sand-2:#F7F5F2;
+    --rule:#E3E5E8; --rule-warm:#E3E0DA; --dark-rule:#31363E; --dark-2:#A2A8B1;
+    --pad:48px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,'Malgun Gothic',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  a{color:var(--crimson);text-decoration:none}
+  a:hover{color:var(--crimson-d);text-decoration:underline}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 var(--pad)}
+  .en-only{display:none}
+  body.en .ko-only{display:none}
+  body.en .en-only{display:block}
+
+  /* header */
+  .util{background:var(--ink);color:var(--dark-2);border-bottom:1px solid #2A2E35}
+  .util .wrap{display:flex;justify-content:space-between;align-items:center;height:34px;
+    font-size:11.5px;letter-spacing:.04em}
+  .langbtn{background:none;border:1px solid #4A505A;color:#C6CBD2;font:inherit;font-size:11.5px;
+    padding:3px 10px;cursor:pointer;letter-spacing:.06em}
+  .langbtn:hover{border-color:#7E858F;color:#fff}
+  .nav{background:var(--ink);color:#E8E6E3;position:sticky;top:0;z-index:20}
+  .nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;
+    min-height:64px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+  .brand{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .brand b{font-size:18px;font-weight:700;letter-spacing:-.01em}
+  .brand span{font-size:11px;letter-spacing:.1em;color:var(--dark-2)}
+  .menu{display:flex;gap:22px;flex-wrap:wrap;font-size:13.5px}
+  .menu a{color:#C6CBD2}
+  .menu a:hover{color:#fff;text-decoration:none}
+  .menu a.j{color:var(--crimson-l)}
+
+  /* hero */
+  .hero{position:relative;background:var(--ink);overflow:hidden}
+  .hero svg{position:absolute;left:0;top:0;width:100%;height:100%}
+  .hero .wrap{position:relative;padding-top:84px;padding-bottom:88px;max-width:1200px}
+  .eyebrow{font-size:11.5px;letter-spacing:.16em;color:var(--crimson-l);font-weight:500}
+  .hero h1{margin:22px 0 0;font-size:40px;font-weight:700;line-height:1.42;letter-spacing:-.025em;
+    color:#F2F1EF;text-wrap:pretty;max-width:640px}
+  .hero p{margin:22px 0 0;font-size:15px;line-height:1.9;color:#B7BCC4;max-width:520px;text-wrap:pretty}
+  .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+  .btn{padding:12px 24px;font-size:14px;font-weight:500;background:var(--crimson);color:#fff}
+  .btn:hover{background:var(--crimson-d);color:#fff;text-decoration:none}
+  .btn.ghost{background:none;border:1px solid #5A616B;color:#E8E6E3}
+  .btn.ghost:hover{border-color:#9AA1AA;color:#fff}
+
+  /* metrics */
+  .metrics{background:var(--sand);border-bottom:1px solid var(--rule-warm)}
+  .metrics .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+  .metric{padding:24px 0 24px 28px;border-left:1px solid #E0DCD5;display:flex;flex-direction:column;gap:5px}
+  .metric:first-child{padding-left:0;border-left:0}
+  .metric b{font-size:26px;font-weight:700;letter-spacing:-.02em}
+  .metric b i{font-style:normal;font-size:13.5px;font-weight:400;color:var(--muted)}
+  .metric span{font-size:13px;color:var(--muted)}
+  .metric.accent b{color:var(--crimson)}
+
+  /* sections */
+  section{padding:64px 0;border-bottom:1px solid var(--rule)}
+  section.tint{background:var(--sand);border-bottom-color:var(--rule-warm)}
+  .shead{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;
+    flex-wrap:wrap;margin-bottom:30px}
+  .shead h2{margin:0;font-size:23px;font-weight:700;letter-spacing:-.02em}
+  .shead .sub{font-size:13px;color:var(--muted);margin-top:7px}
+  .lead{font-size:16px;line-height:1.95;color:var(--ink-2);max-width:760px;text-wrap:pretty}
+
+  .cols{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:30px}
+  .c7{grid-column:span 7}
+  .c5{grid-column:span 5}
+  .c6{grid-column:span 6}
+
+  ul.plain{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px}
+  ul.plain li{font-size:14px;line-height:1.65;color:var(--body);padding-left:14px;position:relative}
+  ul.plain li::before{content:"·";position:absolute;left:0;color:var(--crimson)}
+
+  /* research cards */
+  .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+  .card{background:var(--sand-2);border-top:3px solid var(--crimson);padding:28px 26px 30px;
+    display:flex;flex-direction:column;gap:14px}
+  .card .kicker{font-size:11.5px;letter-spacing:.1em;color:var(--crimson);font-weight:500}
+  .card h3{margin:0;font-size:18px;font-weight:700;line-height:1.5}
+  .card .foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--rule-warm);
+    display:flex;flex-direction:column;gap:11px}
+  .card .cname{font-size:13.5px;font-weight:500}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{padding:7px 12px;border:1px solid #D8D4CD;background:#fff;font-size:13px;color:var(--ink)}
+  a.chip:hover{border-color:var(--crimson);color:var(--crimson);text-decoration:none}
+  .chip.slot{border-style:dashed;border-color:#C9C6C0;color:var(--muted);background:none}
+
+  /* people */
+  .people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--rule-warm)}
+  .person{background:var(--paper);padding:20px 22px 22px;display:flex;flex-direction:column;gap:7px}
+  .person .nm{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+  .person .nm b{font-size:16px;font-weight:700;letter-spacing:-.01em}
+  .person .nm span{font-size:12.5px;color:var(--muted)}
+  .person .field{font-size:13.5px;font-weight:500;color:var(--crimson-d)}
+  .person .detail{font-size:13px;line-height:1.65;color:var(--body)}
+  .person.head{background:var(--sand-2)}
+
+  .hpmark{font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-weight:700;letter-spacing:-.005em}
+
+  /* journal */
+  .jbox{background:#fff;border:1px solid var(--rule-warm);padding:22px 22px 24px;
+    display:flex;flex-direction:column;gap:12px}
+  .jrow{padding:9px 0;border-top:1px solid #EDEBE7;font-size:13.5px;line-height:1.6}
+  .jmeta{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .jmeta .lbl{font-size:11px;letter-spacing:.1em;color:var(--muted)}
+
+  /* projects */
+  .projects{display:flex;flex-direction:column}
+  .proj{padding:16px 0;border-top:1px solid var(--rule);display:flex;flex-direction:column;gap:6px}
+  .proj .ptitle{font-size:14.5px;font-weight:500;line-height:1.6;text-wrap:pretty}
+  .proj .pmeta{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+  .proj .pmeta span+span{padding-left:14px;border-left:1px solid var(--rule)}
+
+  details.more{border-top:1px solid var(--rule)}
+  details.more>summary{list-style:none;cursor:pointer;padding:14px 0;font-size:13.5px;
+    font-weight:500;color:var(--crimson-d)}
+  details.more>summary::-webkit-details-marker{display:none}
+  details.more>summary::after{content:" ▾"}
+  details.more[open]>summary::after{content:" ▴"}
+  details.more>summary:hover{color:var(--crimson)}
+  details.more .proj:first-child{border-top:1px solid var(--rule)}
+
+  /* activity */
+  .actgroup+.actgroup{margin-top:34px}
+  .actheading{font-size:15px;font-weight:700;padding-bottom:12px;border-bottom:2px solid var(--ink)}
+  .actlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 34px}
+  .act{display:flex;gap:12px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--rule);
+    font-size:13.5px;line-height:1.6}
+  .act .who{flex:0 0 52px;font-weight:500}
+  .act .what{flex:1 1 auto;display:flex;flex-direction:column;gap:2px}
+  .act .what .org{color:var(--ink-2)}
+  .act .what .role{color:var(--crimson-d);font-size:13px}
+  .act .per{flex:0 0 auto;color:var(--muted);font-size:12.5px;white-space:nowrap}
+
+  /* news */
+  .newsrow{display:flex;gap:16px;align-items:baseline;padding:14px 0;border-top:1px solid var(--rule);
+    font-size:14px;flex-wrap:wrap}
+  .tag{font-size:11.5px;padding:3px 8px;background:#EAEEF1;color:#4C5661}
+  .tag.n{background:#F5E7EA;color:var(--crimson-d)}
+  .newsrow .date{margin-left:auto;color:var(--muted);font-size:13px}
+  .event{background:var(--sand);border-left:3px solid var(--crimson);padding:24px 22px;
+    display:flex;flex-direction:column;gap:14px}
+
+  /* contact + footer */
+  .kv{display:flex;gap:16px;padding:13px 0;border-top:1px solid var(--rule);font-size:14px;line-height:1.7}
+  .kv b{flex:0 0 96px;font-weight:500;color:var(--muted)}
+  footer{background:var(--ink);color:var(--dark-2);font-size:13px;line-height:1.8}
+  footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;
+    padding-top:32px;padding-bottom:38px}
+  footer b{display:block;color:#E8E6E3;font-weight:500;padding-bottom:6px}
+  footer .links{display:flex;gap:24px;flex-wrap:wrap}
+  footer a{color:var(--dark-2)}
+  footer a:hover{color:#fff}
+  .note{font-size:12.5px;color:var(--muted);margin-top:16px}
+
+  @media (max-width:900px){
+    :root{--pad:28px}
+    .metrics .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .metric{padding-left:20px}
+    .metric:nth-child(3){padding-left:0;border-left:0}
+    .cards{grid-template-columns:1fr}
+    .people{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .actlist{grid-template-columns:1fr}
+    .c7,.c5,.c6{grid-column:span 12}
+    .hero h1{font-size:30px}
+    .nav .wrap{min-height:0}
+    .menu{gap:14px;font-size:13px}
+  }
+  @media (max-width:560px){
+    .metrics .wrap{grid-template-columns:1fr}
+    .metric{padding-left:0;border-left:0;border-top:1px solid #E0DCD5}
+    .metric:first-child{border-top:0}
+    .people{grid-template-columns:1fr}
+  }
+
+  .menu a.on{color:#fff}
+  .pagehead{background:var(--ink);color:#E8E6E3;padding:56px 0 58px}
+  .pagehead h1{margin:0;font-size:32px;font-weight:700;letter-spacing:-.025em;color:#F2F1EF}
+  .pagehead p{margin:14px 0 0;font-size:14.5px;line-height:1.85;color:#B7BCC4;max-width:640px;text-wrap:pretty}
+
+  .pubfilter{display:flex;flex-direction:column;align-items:flex-start;gap:9px;margin:0 0 26px}
+  .pubfilter .frow{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .pubfilter .flbl{font-size:11px;letter-spacing:.1em;color:var(--muted);
+    margin-right:6px;min-width:52px}
+  .pubkind{margin:48px 0 2px;font-size:11.5px;letter-spacing:.14em;color:var(--crimson);
+    font-weight:500}
+  #publist .pubkind:first-child{margin-top:0}
+  .pubempty{padding:22px 0;font-size:13.5px;color:var(--muted)}
+  .fchip{padding:6px 12px;border:1px solid #D8D4CD;background:#fff;font:inherit;font-size:13px;
+    color:var(--ink);cursor:pointer;line-height:1.5}
+  .fchip:hover{border-color:var(--crimson);color:var(--crimson)}
+  .fchip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+  .fchip i{font-style:normal;color:var(--muted);font-size:12px;margin-left:5px}
+  .fchip.on i{color:#9AA1AA}
+  .pubyear{display:flex;align-items:baseline;gap:10px;padding:26px 0 9px;
+    border-bottom:2px solid var(--ink)}
+  .pubyear:first-child{padding-top:0}
+  .pubyear .y{font-size:18px;font-weight:700;letter-spacing:-.02em}
+  .pubyear .yn{font-size:12.5px;color:var(--muted)}
+  .pub{padding:13px 0;border-bottom:1px solid var(--rule);font-size:13.5px;line-height:1.6}
+  .pub .pt{color:var(--ink)}
+  .pub .pj{display:block;font-size:12.5px;color:var(--muted);margin-top:3px}
+  .pub .pw{color:var(--crimson-d)}
+  .orcidlist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--rule-warm)}
+  .orcid{background:var(--paper);padding:15px 18px;display:flex;justify-content:space-between;
+    align-items:baseline;gap:12px;color:var(--ink);font-size:14px;font-weight:500}
+  .orcid:hover{text-decoration:none;color:var(--crimson-d)}
+  .orcid .oid{font-size:11.5px;color:var(--muted);font-weight:400;white-space:nowrap}
+  @media (max-width:900px){ .orcidlist{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="util">
+  <div class="wrap">
+    <div class="t" data-ko="KOREA UNIVERSITY · COLLEGE OF HEALTH SCIENCE" data-en="KOREA UNIVERSITY · COLLEGE OF HEALTH SCIENCE">KOREA UNIVERSITY · COLLEGE OF HEALTH SCIENCE</div>
+    <button class="langbtn" id="lang" type="button">ENGLISH</button>
+  </div>
+</div>
+
+<div class="nav">
+  <div class="wrap">
+    <div class="brand">
+      <a href="index.html" style="color:inherit;text-decoration:none"><b class="t" data-ko="보건정책관리연구소(준)" data-en="Institute of Health Policy and Management">보건정책관리연구소(준)</b></a>
+      <span class="t" data-ko="INSTITUTE OF HEALTH POLICY AND MANAGEMENT" data-en="PREPARATORY INSTITUTE · KOREA UNIVERSITY">INSTITUTE OF HEALTH POLICY AND MANAGEMENT</span>
+    </div>
+    <nav class="menu">
+        <a href="index.html#about" class="t" data-ko="연구소 소개" data-en="About">연구소 소개</a>
+        <a href="people.html" class="t" data-ko="구성원" data-en="People">구성원</a>
+        <a href="research.html" class="t" data-ko="과제" data-en="Projects">과제</a>
+        <a href="publications.html" class="t on" data-ko="연구업적" data-en="Research output">연구업적</a>
+        <a href="service.html" class="t" data-ko="대외활동" data-en="Service">대외활동</a>
+        <a href="https://hpolitics.org" class="j t" target="_blank" rel="noopener" data-ko="Health Politics ↗" data-en="Health Politics ↗">Health Politics ↗</a>
+    </nav>
+  </div>
+</div>
+
+<div class="pagehead">
+  <div class="wrap">
+    <h1 class="t" data-ko="연구업적" data-en="Research output">연구업적</h1>
+    <p class="t" data-ko="연구위원의 ORCID 기록에서 자동으로 가져옵니다. 최근 5개 연도의 학술지 논문·저서·특허를 유형별로 정리하며, 목록은 연도별로 나누어 보여 줍니다." data-en="Drawn automatically from the fellows&#39; ORCID records: journal articles, books and patents from the past five years, grouped by type and browsable year by year.">연구위원의 ORCID 기록에서 자동으로 가져옵니다. 최근 5개 연도의 학술지 논문·저서·특허를 유형별로 정리하며, 목록은 연도별로 나누어 보여 줍니다.</p>
+  </div>
+</div>
+
+<section id="pubs">
+  <div class="wrap">
+    <div class="shead">
+      <div>
+        <div class="sub t" id="pubcount" data-ko="ORCID에서 불러오는 중입니다…" data-en="Loading from ORCID…">ORCID에서 불러오는 중입니다…</div>
+      </div>
+    </div>
+    <div class="pubfilter" id="pubfilter" style="display:none"></div>
+    <div id="publist"></div>
+    <p class="note t" id="pubnote" style="display:none"></p>
+    <p class="note t" data-ko="※ 공동 저술은 한 건으로 계산하며, 프리프린트는 포함하지 않습니다. 목록은 각 연구위원이 ORCID에 등록한 기록을 따르므로, 누락된 논문·저서는 해당 연구위원이 ORCID에 추가하면 자동으로 반영됩니다." data-en="Co-authored works are counted once; preprints are excluded. The list follows each fellow&#39;s own ORCID record, so missing items appear automatically once added there.">※ 공동 저술은 한 건으로 계산하며, 프리프린트는 포함하지 않습니다. 목록은 각 연구위원이 ORCID에 등록한 기록을 따르므로, 누락된 논문·저서는 해당 연구위원이 ORCID에 추가하면 자동으로 반영됩니다.</p>
+  </div>
+</section>
+
+
+
+<footer>
+  <div class="wrap">
+    <div>
+      <b class="t" data-ko="고려대학교 보건정책관리연구소(준)" data-en="Institute of Health Policy and Management, Korea University">고려대학교 보건정책관리연구소(준)</b>
+      <div class="t" data-ko="02841 서울특별시 성북구 안암로 145 하나과학관 B동 364호" data-en="Hana Science Hall B, Room 364, 145 Anam-ro, Seongbuk-gu, Seoul 02841, Korea">02841 서울특별시 성북구 안암로 145 하나과학관 B동 364호</div>
+    </div>
+    <div class="links">
+      <a href="https://hpolitics.org" target="_blank" rel="noopener">Health Politics</a>
+      <a href="https://hpm.korea.ac.kr" target="_blank" rel="noopener"><span class="t" data-ko="보건정책관리학부" data-en="School of Health Policy and Management">보건정책관리학부</span></a>
+      <a href="https://health.korea.ac.kr" target="_blank" rel="noopener"><span class="t" data-ko="보건과학대학" data-en="College of Health Science">보건과학대학</span></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn = document.getElementById('lang');
+  var nodes = document.querySelectorAll('.t');
+  function apply(lang){
+    document.body.classList.toggle('en', lang === 'en');
+    for (var i = 0; i < nodes.length; i++){
+      var v = nodes[i].getAttribute(lang === 'en' ? 'data-en' : 'data-ko');
+      if (v !== null) nodes[i].innerHTML = v;
+    }
+    btn.textContent = lang === 'en' ? '국문' : 'ENGLISH';
+    document.documentElement.lang = lang === 'en' ? 'en' : 'ko';
+    try { document.dispatchEvent(new CustomEvent('langchange')); } catch (e) {}
+    try { localStorage.setItem('ihpm-lang', lang); } catch (e) {}
+  }
+  var saved = 'ko';
+  try { saved = localStorage.getItem('ihpm-lang') || 'ko'; } catch (e) {}
+  apply(saved === 'en' ? 'en' : 'ko');
+  window.applyLang = apply;
+  btn.addEventListener('click', function(){
+    apply(document.body.classList.contains('en') ? 'ko' : 'en');
+  });
+})();
+</script>
+
+
+
+
+<script>
+/* 연구업적 목록 — 연구위원 ORCID 기록에서 수집
+   · 표시 범위: 최근 5개 연도 (발간연도 기준)
+   · 상단 요약은 5년 전체, 목록은 연도 칩으로 한 해씩 — 기본값은 올해
+   · 유형: 학술지 논문 / 저서·저서 장 / 특허 — 0건인 유형은 구획이 나타나지 않음
+   · 프리프린트는 제외 (게재 논문과 함께 세면 실적이 부풀려지므로) */
+(function(){
+  var list=document.getElementById('publist'), cnt=document.getElementById('pubcount'),
+      bar=document.getElementById('pubfilter');
+  if(!list||!window.fetch) return;
+
+  /* 기준 연도는 고정하지 않고 매번 계산한다. 회계연도(3월 시작)를 기준으로 현 연도를
+     정하되, 목록의 연도 구분 자체는 발간연도(역년)를 따른다 */
+  var NOW=new Date();
+  var FY=(NOW.getMonth()+1>=3)?NOW.getFullYear():NOW.getFullYear()-1;
+  var SINCE_Y=FY-4;                       /* 최근 5개 연도 */
+
+  var KINDS=[
+    {k:'article', ko:'학술지 논문', en:'JOURNAL ARTICLES', u_ko:'편', u_en:'articles', u_en1:'article'},
+    {k:'book',    ko:'저서 · 저서 장', s_ko:'저서', en:'BOOKS AND CHAPTERS', u_ko:'권', u_en:'books', u_en1:'book'},
+    {k:'patent',  ko:'특허', en:'PATENTS', u_ko:'건', u_en:'patents', u_en1:'patent'}
+  ];
+  /* 목록에 없는 유형(프리프린트·학술대회 발표·기타)은 표시하지 않는다 */
+  function kindOf(t){
+    t=String(t||'').toLowerCase();
+    if(t.indexOf('journal-article')>=0) return 'article';
+    if(t==='book'||t==='book-chapter'||t==='edited-book') return 'book';
+    if(t==='patent') return 'patent';
+    return null;
+  }
+  var RANK={article:3, book:2, patent:1};
+
+  /* 목록에서 빼는 항목 — DOI 또는 식별자로 지정한다.
+     학술대회 초록이 Web of Science를 통해 journal-article 유형으로 등록된 경우가 있는데,
+     그 항목은 등록 주체(WoS·Clarivate)만 고칠 수 있어 ORCID에서 유형을 바로잡을 수 없다.
+     그런 항목을 여기에 적어 둔다. ?check 화면에서 확인한 뒤 한 줄씩 추가하면 된다. */
+  var EXCLUDE=[
+    /* 제15차 유럽공중보건학회(베를린, 2022.11.) 초록 4건 — 정혜주 */
+    'WOS:000895463401508',   /* A Sick Benefit Scheme Reduces Unmet Healthcare Needs */
+    'WOS:000895463400655',   /* Inequalities in adverse birth outcomes and survival */
+    'WOS:000895463402045',   /* Paid Sick Leave and Sickness Benefits for employees' */
+    'WOS:000895463401361'    /* The paid sick leave and sickness benefits for UHC */
+  ];
+  var EXSET={};
+  EXCLUDE.forEach(function(v){ EXSET[String(v).toLowerCase()]=1; });
+  function excluded(g){
+    var hit=false;
+    (g['work-summary']||[]).forEach(function(s){
+      ((s['external-ids']||{})['external-id']||[]).forEach(function(x){
+        if(EXSET[String(x['external-id-value']||'').toLowerCase()]) hit=true;
+      });
+    });
+    ((g['external-ids']||{})['external-id']||[]).forEach(function(x){
+      if(EXSET[String(x['external-id-value']||'').toLowerCase()]) hit=true;
+    });
+    return hit;
+  }
+
+  var IDS=['0000-0002-2661-4161','0000-0002-8576-8195','0000-0003-2043-2575','0000-0002-8368-3032','0000-0002-4675-4612','0000-0002-9864-3957','0000-0002-7546-9685','0000-0001-8853-7061','0000-0001-7748-5622','0000-0001-5723-9061','0000-0003-0696-9421'], NAMES={'0000-0002-2661-4161':{ko:'정혜주',en:'Haejoo Chung'},'0000-0002-8576-8195':{ko:'최만규',en:'Mankyu Choi'},'0000-0003-2043-2575':{ko:'김혜영',en:'Hae-Young Kim'},'0000-0002-8368-3032':{ko:'오하나',en:'Hannah Oh'},'0000-0002-4675-4612':{ko:'김진호',en:'Jinho Kim'},'0000-0002-9864-3957':{ko:'김록리',en:'Rockli Kim'},'0000-0002-7546-9685':{ko:'박성철',en:'Sungchul Park'},'0000-0001-8853-7061':{ko:'최홍조',en:'Hongjo Choi'},'0000-0001-7748-5622':{ko:'손민성',en:'Minsung Sohn'},'0000-0001-5723-9061':{ko:'이환희',en:'Whanhee Lee'},'0000-0003-0696-9421':{ko:'박금령',en:'Gum-Ryeong Park'}};
+  var works={}, diag={};
+
+  /* DOI가 없으면 제목으로 중복을 가림. 공백·문장부호만 걷어내고 글자는 그대로 두어야
+     국문 제목이 빈 문자열이 되지 않음 */
+  function slug(t){ return String(t).toLowerCase().replace(/[\s.,:;!?'"“”‘’()\[\]{}<>\/\\|·…∙•\-–—_~]/g,'').slice(0,120); }
+  function key(w){ return w.doi ? 'doi:'+w.doi.toLowerCase() : 'ti:'+slug(w.title); }
+
+  /* 그 항목을 연구위원 본인이 등록했는지 — 기관이 넣은 것과 구별한다 */
+  function mine(s, id){
+    var so=(s.source||{})['source-orcid']||{};
+    return String(so.path||'')===String(id);
+  }
+
+  function pick(g, id){
+    /* 한 그룹(동일 저작)의 여러 출처를 훑어 가장 완전한 정보를 모음.
+       유형은 본인이 등록한 것이 있으면 그것만 따른다. Web of Science 등이 학술대회 초록을
+       journal-article로 올려 두는 경우가 있는데, 등록 주체만 고칠 수 있어 ORCID에서
+       바로잡을 수 없기 때문이다. 본인이 conference-abstract로 다시 등록하면 그 판단이 이긴다.
+       본인 등록분이 없을 때만 기관 등록분을 보고, 그중에서는 게재본 유형이 프리프린트를 이긴다 */
+    var ss=g['work-summary']||[]; if(!ss.length) return null;
+    var own=false;
+    for(var q=0;q<ss.length;q++){ if(mine(ss[q], id)){ own=true; break; } }
+    var kind=null, sub='', title='', journal='', doi='', y=0, m=0;
+    for(var i=0;i<ss.length;i++){
+      var s=ss[i];
+      var kk=(own && !mine(s, id)) ? null : kindOf(s.type);
+      if(kk && (!kind || RANK[kk]>RANK[kind])){ kind=kk; sub=String(s.type||'').toLowerCase(); }
+      if(!title && s.title && s.title.title) title=s.title.title.value||'';
+      if(!journal && s['journal-title']) journal=s['journal-title'].value||'';
+      var pd=s['publication-date']||{};
+      var yy=pd.year?parseInt(pd.year.value,10):0;
+      var mm=pd.month?parseInt(pd.month.value,10):0;
+      if(yy && (!y || yy>y || (yy===y && mm>m))){ y=yy; m=mm; }
+      ((s['external-ids']||{})['external-id']||[]).forEach(function(x){
+        if(!doi && (x['external-id-type']||'').toLowerCase()==='doi') doi=x['external-id-value']||'';
+      });
+    }
+    return {kind:kind, dated:!!y, y:y, m:m,
+            w:(kind&&title&&y)?{kind:kind,sub:sub,title:title,journal:journal,
+                                year:y,month:m,doi:doi,who:[]}:null};
+  }
+
+  function pull(id){
+    return fetch('https://pub.orcid.org/v3.0/'+id+'/works',{headers:{'Accept':'application/json'}})
+      .then(function(r){ return r.ok?r.json():Promise.reject(); })
+      .then(function(d){
+        var st=diag[id]={total:(d.group||[]).length, use:0, kept:0, nodate:0, last:0, err:false};
+        (d.group||[]).forEach(function(g){
+          if(excluded(g)) return;
+          var r=pick(g, id);
+          if(r.kind){
+            st.use++;
+            if(!r.dated) st.nodate++;
+            else { var v=r.y*12+(r.m||0); if(v>st.last){ st.last=v; st.lastY=r.y; st.lastM=r.m; } }
+          }
+          var w=r.w; if(!w) return;
+          if(w.year<SINCE_Y) return;
+          st.kept++;
+          var k=key(w);
+          if(works[k]){
+            if(works[k].who.indexOf(id)<0) works[k].who.push(id);
+            if(!works[k].journal) works[k].journal=w.journal;
+            if(!works[k].doi) works[k].doi=w.doi;
+            if(RANK[w.kind]>RANK[works[k].kind]) works[k].kind=w.kind;
+          } else { w.who=[id]; works[k]=w; }
+        });
+      }).catch(function(){ diag[id]={total:0,use:0,kept:0,nodate:0,last:0,err:true}; });
+  }
+
+  /* 저서·저서 장의 출판사 — ORCID에는 출판사 항목이 없어 Crossref에서 DOI로 받아 온다.
+     건수가 적어 부담이 없고, 조회에 실패하면 출판사만 빠진 채 그대로 표시된다 */
+  /* Crossref의 출판사 표기에는 지명이 공백 없이 붙어 오는 경우가 있다
+     (예: "Oxford University PressNew York"). 출판사명이 끝나는 자리에서 끊는다 */
+  function tidyPub(v){
+    var m=String(v||'').match(/^(.*?(?:University Press|Press|Publishing|Publishers|Publications|Books|Verlag|Ltd|Inc))(?=[A-Z])/);
+    return (m ? m[1] : String(v||'')).trim();
+  }
+
+  function publishers(list){
+    var need=list.filter(function(w){ return w.kind==='book' && w.doi; });
+    if(!need.length) return Promise.resolve();
+    return Promise.all(need.map(function(w){
+      return fetch('https://api.crossref.org/works/'+encodeURIComponent(w.doi)
+                   +'?mailto=journal@hpolitics.org')
+        .then(function(r){ return r.ok?r.json():Promise.reject(); })
+        .then(function(d){ w.publisher=tidyPub(((d||{}).message||{}).publisher||''); })
+        .catch(function(){});
+    }));
+  }
+
+  Promise.all(IDS.map(pull)).then(function(){
+    var all=Object.keys(works).map(function(k){ return works[k]; });
+    return publishers(all).then(function(){ return all; });
+  }).then(function(all){
+    if(!all.length){
+      cnt.setAttribute('data-ko','목록을 불러오지 못했습니다. 잠시 후 새로고침해 주십시오.');
+      cnt.setAttribute('data-en','The list could not be loaded. Please refresh in a moment.');
+      cnt.textContent = document.body.classList.contains('en')
+        ? 'The list could not be loaded. Please refresh in a moment.'
+        : '목록을 불러오지 못했습니다. 잠시 후 새로고침해 주십시오.';
+      return;
+    }
+    all.sort(function(a,b){ return (b.year-a.year) || (b.month-a.month) || a.title.localeCompare(b.title); });
+
+    /* 연구위원별 건수 — 필터 칩에 쓸 목록을 추리는 용도 */
+    var got={};
+    all.forEach(function(w){ w.who.forEach(function(id){ got[id]=(got[id]||0)+1; }); });
+
+    var YEARS=[]; for(var y=FY; y>=SINCE_Y; y--) YEARS.push(y);
+
+    var who=null;          /* null = 전체 연구위원 */
+    var year=FY;           /* 기본값: 올해 / 'all' = 5년 전체 */
+
+    function en(){ return document.body.classList.contains('en'); }
+    function esc(x){ return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    function monthEn(m){
+      return ['January','February','March','April','May','June',
+              'July','August','September','October','November','December'][m-1]||'';
+    }
+    /* 국문은 가나다순, 영문은 성(姓) ABC순 */
+    function enkey(s){ var a=String(s).split(' '); return (a.pop()+' '+a.join(' ')).toLowerCase(); }
+
+    /* 상단 요약은 언제나 5년 전체를 말한다 — 규모는 여기서 드러나고, 목록은 한 해씩 본다 */
+    function drawCount(scope){
+      var e=en(), ko=[], enp=[];
+      KINDS.forEach(function(K){
+        var n=scope.filter(function(w){ return w.kind===K.k; }).length;
+        if(!n) return;
+        ko.push((K.s_ko||K.ko)+' '+n+K.u_ko);   /* 요약줄에서는 짧은 이름을 쓴다 */
+        enp.push(n+' '+(n===1?K.u_en1:K.u_en));
+      });
+      var head_ko = who ? NAMES[who].ko+' · 최근 5년' : ('최근 5년('+SINCE_Y+'–'+FY+')');
+      var head_en = who ? NAMES[who].en+' · past five years' : ('Past five years ('+SINCE_Y+'–'+FY+')');
+      var kos=head_ko+' '+ko.join(' · ');
+      var ens=head_en+': '+enp.join(' · ');
+      cnt.setAttribute('data-ko',kos);
+      cnt.setAttribute('data-en',ens);
+      cnt.textContent=e?ens:kos;
+    }
+
+    function chip(label, sub, on, fn){
+      var b=document.createElement('button');
+      b.type='button';
+      b.className='fchip'+(on?' on':'');
+      b.textContent=label;
+      if(sub){ var i=document.createElement('i'); i.textContent=sub; b.appendChild(i); }
+      b.addEventListener('click', fn);
+      return b;
+    }
+
+    function drawFilter(scope){
+      var e=en();
+      bar.innerHTML='';
+
+      /* 연도 */
+      var r1=document.createElement('div'); r1.className='frow';
+      var l1=document.createElement('span'); l1.className='flbl';
+      l1.textContent=e?'YEAR':'연도'; r1.appendChild(l1);
+      /* 두 줄 모두 「전체」를 맨 앞에 둔다. 다만 처음 열었을 때는 올해가 골라져 있어
+         목록이 5년치로 쏟아지지 않는다 */
+      r1.appendChild(chip(e?'All years':'5년 전체', String(scope.length), year==='all',
+        function(){ year='all'; draw(); }));
+      YEARS.forEach(function(y){
+        var n=scope.filter(function(w){ return w.year===y; }).length;
+        /* 기록이 없는 해는 칩을 만들지 않되, 지금 고른 해는 0건이어도 남겨 둔다 */
+        if(!n && year!==y) return;
+        r1.appendChild(chip(String(y), String(n), year===y, function(){ year=y; draw(); }));
+      });
+      bar.appendChild(r1);
+
+      /* 연구위원 */
+      var r2=document.createElement('div'); r2.className='frow';
+      var l2=document.createElement('span'); l2.className='flbl';
+      l2.textContent=e?'FELLOW':'연구위원'; r2.appendChild(l2);
+      var ids=IDS.filter(function(id){ return got[id]; }).sort(function(a,b){
+        return e ? enkey(NAMES[a].en).localeCompare(enkey(NAMES[b].en))
+                 : NAMES[a].ko.localeCompare(NAMES[b].ko,'ko'); });
+      r2.appendChild(chip(e?'All':'전체', '', who===null, function(){ who=null; draw(); }));
+      ids.forEach(function(id){
+        r2.appendChild(chip(e?NAMES[id].en:NAMES[id].ko, '', who===id, function(){ who=id; draw(); }));
+      });
+      bar.appendChild(r2);
+
+      bar.style.display='flex';
+    }
+
+    function draw(){
+      var e=en();
+      var scope = who ? all.filter(function(w){ return w.who.indexOf(who)>=0; }) : all;
+
+      drawFilter(scope);
+      drawCount(scope);
+
+      var rows = (year==='all') ? scope : scope.filter(function(w){ return w.year===year; });
+      var frag=document.createDocumentFragment();
+
+      if(!rows.length){
+        /* 고른 조건을 임의로 바꾸지 않는다 — 비어 있다는 사실을 그대로 보인다 */
+        var em=document.createElement('div'); em.className='pubempty';
+        var whoTxt = who ? ((e?NAMES[who].en:NAMES[who].ko)+(e?': ':' 연구위원의 ')) : '';
+        var yrTxt  = (year==='all') ? (e?'the past five years':'최근 5년') : (e?String(year):(year+'년'));
+        em.textContent = e
+          ? (whoTxt+'no records in ORCID for '+yrTxt+'.')
+          : (whoTxt+yrTxt+' 기록이 ORCID에 등록되어 있지 않습니다.');
+        frag.appendChild(em);
+        list.innerHTML=''; list.appendChild(frag);
+        return;
+      }
+
+      KINDS.forEach(function(K){
+        var sub=rows.filter(function(w){ return w.kind===K.k; });
+        if(!sub.length) return;          /* ← 0건인 유형은 구획째 만들지 않는다 */
+
+        var kh=document.createElement('div');
+        kh.className='pubkind';
+        kh.textContent=e?K.en:K.ko;
+        frag.appendChild(kh);
+
+        var yy=null, head=null, n=0;
+        function closeYear(){
+          if(head){ var t=head.querySelector('.yn');
+            t.textContent = e?(n+' '+(n===1?K.u_en1:K.u_en)):(n+K.u_ko); }
+        }
+        sub.forEach(function(w){
+          if(w.year!==yy){
+            closeYear();
+            yy=w.year; n=0;
+            head=document.createElement('div'); head.className='pubyear';
+            var ye=document.createElement('span'); ye.className='y'; ye.textContent=w.year;
+            var c=document.createElement('span'); c.className='yn';
+            head.appendChild(ye); head.appendChild(c);
+            frag.appendChild(head);
+          }
+          n++;
+          var d=document.createElement('div'); d.className='pub';
+          var t;
+          if(w.doi){ t=document.createElement('a'); t.href='https://doi.org/'+w.doi; t.target='_blank'; t.rel='noopener'; t.style.color='inherit'; }
+          else { t=document.createElement('span'); }
+          t.className='pt'; t.textContent=w.title; d.appendChild(t);
+          var meta=document.createElement('span'); meta.className='pj';
+          var names=w.who.map(function(id){ return e?NAMES[id].en:NAMES[id].ko; }).join(' · ');
+          var when=w.month? (w.month+'월') : '';
+          if(e) when=w.month? monthEn(w.month) : '';
+          var bits=[];
+          /* 학술지명·수록서명 — 어느 쪽이든 서명만 기울여 적는다 */
+          if(w.journal) bits.push('<em style="font-style:italic">'+esc(w.journal)+'</em>');
+          if(w.publisher) bits.push(esc(w.publisher));
+          if(when) bits.push(when);
+          bits.push('<span class="pw">'+esc(names)+'</span>');
+          meta.innerHTML=bits.join(' · ');
+          d.appendChild(meta);
+          frag.appendChild(d);
+        });
+        closeYear();
+      });
+
+      list.innerHTML=''; list.appendChild(frag);
+    }
+
+    /* 점검용 — 주소 끝에 ?check 를 붙였을 때만 보임 (방문자에게는 나타나지 않음) */
+    if(/[?&]check\b/.test(location.search)){
+      var nm=document.getElementById('pubnote');
+      if(nm){
+        var h='<b style="display:block;margin-bottom:8px;color:var(--ink)">ORCID 수집 점검</b>'
+          + '<table style="border-collapse:collapse;font-size:12.5px">'
+          + '<tr style="color:var(--muted)"><td style="padding:2px 14px 6px 0">연구위원</td>'
+          + '<td style="padding:2px 14px 6px 0">ORCID 등록</td>'
+          + '<td style="padding:2px 14px 6px 0">표시 대상 유형</td>'
+          + '<td style="padding:2px 14px 6px 0">기간 내</td>'
+          + '<td style="padding:2px 14px 6px 0">최신 기록</td>'
+          + '<td style="padding:2px 0 6px 0">날짜 없음</td></tr>';
+        IDS.forEach(function(id){
+          var d=diag[id]||{total:0,use:0,kept:0,err:true};
+          h+='<tr><td style="padding:2px 14px 2px 0">'+NAMES[id].ko+'</td>'
+           + '<td style="padding:2px 14px 2px 0">'+(d.err?'조회 실패':d.total)+'</td>'
+           + '<td style="padding:2px 14px 2px 0">'+(d.err?'-':d.use)+'</td>'
+           + '<td style="padding:2px 14px 2px 0">'+(d.err?'-':d.kept)+'</td>'
+           + '<td style="padding:2px 14px 2px 0">'+(d.err?'-':(d.lastY?(d.lastY+(d.lastM?'. '+d.lastM+'.':'')):'없음'))+'</td>'
+           + '<td style="padding:2px 0 2px 0">'+(d.err?'-':d.nodate)+'</td></tr>';
+        });
+        h+='</table><div style="margin-top:8px;color:var(--muted)">'
+         + '「표시 대상 유형」은 학술지 논문·저서·특허의 합계임(프리프린트·학술대회 발표 제외). '
+         + '「기간 내」는 그 가운데 '+SINCE_Y+'년 이후 건수이고, 「날짜 없음」이 크면 발간일 없이 '
+         + '등록되어 목록에서 빠진 것임.</div>';
+        nm.removeAttribute('data-ko'); nm.removeAttribute('data-en');
+        nm.className='note';
+        nm.innerHTML=h;
+        nm.style.display='block';
+      }
+    }
+
+    draw();
+    document.addEventListener('langchange', draw);
+  });
+})();
+</script>
+</body>
+</html>
