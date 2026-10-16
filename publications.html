@@ -302,6 +302,7 @@
     }
     btn.textContent = lang === 'en' ? '국문' : 'ENGLISH';
     document.documentElement.lang = lang === 'en' ? 'en' : 'ko';
+    document.title = lang === 'en' ? "Publications · Institute of Health Policy and Management" : "연구업적 · 보건정책관리연구소(준)";
     try { document.dispatchEvent(new CustomEvent('langchange')); } catch (e) {}
     try { localStorage.setItem('ihpm-lang', lang); } catch (e) {}
   }

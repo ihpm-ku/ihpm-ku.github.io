@@ -454,6 +454,7 @@
     }
     btn.textContent = lang === 'en' ? '국문' : 'ENGLISH';
     document.documentElement.lang = lang === 'en' ? 'en' : 'ko';
+    document.title = lang === 'en' ? "Institute of Health Policy and Management · Korea University" : "보건정책관리연구소(준) · 고려대학교";
     try { localStorage.setItem('ihpm-lang', lang); } catch (e) {}
   }
   var saved = 'ko';
