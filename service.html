@@ -527,9 +527,10 @@
 <script>
 (function(){
   var btn = document.getElementById('lang');
-  var nodes = document.querySelectorAll('.t');
   function apply(lang){
     document.body.classList.toggle('en', lang === 'en');
+    /* 시트에서 나중에 그려 넣은 항목까지 바뀌도록 매번 다시 찾는다 */
+    var nodes = document.querySelectorAll('.t');
     for (var i = 0; i < nodes.length; i++){
       var v = nodes[i].getAttribute(lang === 'en' ? 'data-en' : 'data-ko');
       if (v !== null) nodes[i].innerHTML = v;
@@ -553,15 +554,14 @@
 /* 대외활동 — 기간 표기에서 재임/역임을 자동 판정해 나눈다
    · 재임: 종료 표기가 없거나 아직 지나지 않은 것 — 시작 연도와 무관하게 모두 표시
    · 역임: 이미 끝난 것 — 최근 5개 연도까지만 표시
-   기간 표기는 「2026.3~」 「2024.7~2026.6」 「2023~2027」 형태를 모두 받는다 */
+   기간 표기는 「2026.3~」 「2024.7~2026.6」 「2023~2027」 형태를 모두 받는다.
+   시트에서 목록을 새로 그린 뒤에도 다시 부를 수 있도록 window.ihpmSplit 으로 내놓는다 */
 (function(){
-  var groups=[].slice.call(document.querySelectorAll('.actgroup'));
-  if(!groups.length) return;
-
   var NOW=new Date();
   var FY=(NOW.getMonth()+1>=3)?NOW.getFullYear():NOW.getFullYear()-1;
   var SINCE_Y=FY-4;
   var CUT=NOW.getFullYear()*12+(NOW.getMonth()+1);
+  var state=[];
 
   /* 「2024.7」 → 월 단위 숫자. 월이 없으면 끝 판정에 유리하게 12월로 본다 */
   function num(part, endish){
@@ -576,27 +576,7 @@
     var a=(i<0)?t:t.slice(0,i), b=(i<0)?'':t.slice(i+1);
     return {start:num(a,false), end:b?num(b,true):null};
   }
-
-  var state=[];
-  groups.forEach(function(g){
-    var list=g.querySelector('.actlist'); if(!list) return;
-    var rows=[].slice.call(list.querySelectorAll('.act'));
-    var now=[], past=[];
-    rows.forEach(function(r){
-      var pe=r.querySelector('.per');
-      var p=parse(pe?pe.textContent:'');
-      r._start=p.start?p.start.v:0;
-      if(!p.end || p.end.v>=CUT){ now.push(r); }
-      else if(p.end.y>=SINCE_Y){ r._end=p.end.v; past.push(r); }
-      /* 5개 연도보다 오래 끝난 것은 어디에도 넣지 않는다 */
-    });
-    now.sort(function(a,b){ return b._start-a._start; });
-    past.sort(function(a,b){ return b._end-a._end; });
-    state.push({list:list, now:now, past:past});
-  });
-
   function en(){ return document.body.classList.contains('en'); }
-
   function head(cls, label, n){
     var d=document.createElement('div');
     d.className='actsub '+cls;
@@ -605,6 +585,27 @@
     c.textContent = en() ? (n+(n===1?' post':' posts')) : (n+'건');
     d.appendChild(c);
     return d;
+  }
+
+  function build(){
+    state=[];
+    [].slice.call(document.querySelectorAll('.actgroup')).forEach(function(g){
+      var list=g.querySelector('.actlist'); if(!list) return;
+      var rows=[].slice.call(list.querySelectorAll('.act'));
+      var now=[], past=[];
+      rows.forEach(function(r){
+        var pe=r.querySelector('.per');
+        var p=parse(pe?pe.textContent:'');
+        r._start=p.start?p.start.v:0;
+        if(!p.end || p.end.v>=CUT){ now.push(r); }
+        else if(p.end.y>=SINCE_Y){ r._end=p.end.v; past.push(r); }
+        /* 5개 연도보다 오래 끝난 것은 어디에도 넣지 않는다 */
+      });
+      now.sort(function(a,b){ return b._start-a._start; });
+      past.sort(function(a,b){ return b._end-a._end; });
+      state.push({list:list, now:now, past:past});
+    });
+    draw();
   }
 
   function draw(){
@@ -622,8 +623,113 @@
     });
   }
 
-  draw();
+  window.ihpmSplit={build:build};
+  build();
   document.addEventListener('langchange', draw);
+})();
+</script>
+<script>
+/* 대외활동 — 구글 시트 「게시」 탭에서 목록을 읽어 온다
+   · SHEET_CSV 에 게시 주소(웹에 게시 → CSV)를 넣으면 그 내용으로 목록을 새로 그린다
+   · 주소가 비어 있거나 읽기에 실패하면 이 파일에 적힌 목록이 그대로 보인다
+   · 관리: 김기훈 — 시트에서 고치면 몇 분 안에 반영된다 */
+(function(){
+  var SHEET_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTdikuz6jS3xYwIZG3tlMiyKfJs0SYZn-DCPv_dIk8p7vaISQtdfVfcZVJUQYY2i5ETpsxGjVG0Qgq1/pub?gid=1443231675&single=true&output=csv';   /* ← 게시 주소를 따옴표 안에 붙여 넣음 */
+  if(!SHEET_CSV || !window.fetch) return;
+
+  var CATS=[
+    ['학술지 편집진',          '국내외 학술지 편집진',     'Journal editorships'],
+    ['학술단체 임원',          '학술단체 임원',            'Academic society leadership'],
+    ['국제기구·국제학술네트워크','국제기구·국제학술네트워크', 'International organisations and networks'],
+    ['정부·공공기관 위원회',    '정부·공공기관 위원회',     'Government and public advisory committees'],
+    ['공공·민간기관 임원',      '공공·민간기관 임원',       'Boards of public and private organisations'],
+    ['자문·심의(기타)',        '기타 자문·심의',           'Other advisory roles'],
+    ['언론·대외활동',          '언론·대외활동',            'Media and public engagement']
+  ];
+  var NAMES={'정혜주':'Haejoo Chung','최만규':'Mankyu Choi','김혜영':'Hae-Young Kim',
+    '오하나':'Hannah Oh','김진호':'Jinho Kim','김록리':'Rockli Kim','박성철':'Sungchul Park',
+    '최홍조':'Hongjo Choi','손민성':'Minsung Sohn','이환희':'Whanhee Lee','박금령':'Gum-Ryeong Park'};
+
+  /* 따옴표·쉼표·줄바꿈이 든 칸까지 처리하는 CSV 읽기 */
+  function csv(text){
+    var rows=[], row=[], cell='', q=false;
+    for(var i=0;i<text.length;i++){
+      var ch=text[i];
+      if(q){
+        if(ch==='"'){ if(text[i+1]==='"'){ cell+='"'; i++; } else q=false; }
+        else cell+=ch;
+      } else if(ch==='"') q=true;
+      else if(ch===','){ row.push(cell); cell=''; }
+      else if(ch==='\n'){ row.push(cell); rows.push(row); row=[]; cell=''; }
+      else if(ch!=='\r') cell+=ch;
+    }
+    if(cell!=='' || row.length){ row.push(cell); rows.push(row); }
+    return rows;
+  }
+  function esc(x){ return String(x||'').replace(/&/g,'&amp;').replace(/</g,'&lt;')
+                   .replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  /* 번역 검토 표시(★)는 화면에 내보내지 않는다 */
+  function clean(x){ return String(x||'').replace(/★/g,'').trim(); }
+  /* 2026-03 · 2026.3 · 2026. 3. 1 · 2023 → 2026.3 / 2023 */
+  function ym(x){
+    var m=String(x||'').match(/(\d{4})(?:\D+(\d{1,2}))?/);
+    return m ? (m[1]+(m[2]?'.'+parseInt(m[2],10):'')) : '';
+  }
+  function node(tag, cls, ko, en){
+    var el=document.createElement(tag);
+    el.className=cls+' t';
+    el.setAttribute('data-ko', esc(ko));
+    el.setAttribute('data-en', esc(en||ko));
+    el.textContent=ko;
+    return el;
+  }
+
+  fetch(SHEET_CSV, {cache:'no-store'})
+    .then(function(r){ return r.ok ? r.text() : Promise.reject(); })
+    .then(function(text){
+      var rows=csv(text); if(rows.length<2) return;
+      var H=rows[0].map(function(h){ return h.trim(); });
+      function col(prefix){ for(var i=0;i<H.length;i++) if(H[i].indexOf(prefix)===0) return i; return -1; }
+      var C={who:col('성명'), cat:col('구분'), org:col('기관·'), sub:col('세부'), role:col('직위·'),
+             s:col('시작'), e:col('종료'), eorg:col('기관 영문'), erole:col('직위 영문')};
+      if(C.who<0 || C.cat<0 || C.org<0) return;   /* 머리글이 바뀌었으면 손대지 않는다 */
+
+      var items=rows.slice(1).map(function(r){
+        function g(k){ return C[k]>=0 ? clean(r[C[k]]) : ''; }
+        return {who:g('who'), cat:g('cat'), org:g('org'), sub:g('sub'), role:g('role'),
+                s:ym(g('s')), e:ym(g('e')), eorg:g('eorg'), erole:g('erole')};
+      }).filter(function(x){ return x.org && x.who; });
+      if(!items.length) return;
+
+      var wrap=document.querySelector('#service .wrap'); if(!wrap) return;
+      var frag=document.createDocumentFragment();
+      CATS.forEach(function(c){
+        var sub=items.filter(function(x){ return x.cat===c[0]; });
+        if(!sub.length) return;                    /* 0건인 구분은 묶음째 만들지 않는다 */
+        var grp=document.createElement('div'); grp.className='actgroup';
+        grp.appendChild(node('div','actheading',c[1],c[2]));
+        var list=document.createElement('div'); list.className='actlist';
+        sub.forEach(function(x){
+          var act=document.createElement('div'); act.className='act';
+          act.appendChild(node('div','who',x.who,NAMES[x.who]));
+          var what=document.createElement('div'); what.className='what';
+          var korg=x.org+(x.sub?' '+x.sub:'');
+          what.appendChild(node('span','org',korg,x.eorg));
+          what.appendChild(node('span','role',x.role,x.erole));
+          act.appendChild(what);
+          var per=document.createElement('div'); per.className='per';
+          per.textContent=(x.s||x.e) ? (x.s+'~'+x.e) : '';
+          act.appendChild(per);
+          list.appendChild(act);
+        });
+        grp.appendChild(list);
+        frag.appendChild(grp);
+      });
+      wrap.innerHTML=''; wrap.appendChild(frag);
+      if(window.ihpmSplit) window.ihpmSplit.build();
+      if(window.applyLang) window.applyLang(document.body.classList.contains('en')?'en':'ko');
+    })
+    .catch(function(){ /* 실패하면 파일에 적힌 목록을 그대로 둔다 */ });
 })();
 </script>
 </body>
